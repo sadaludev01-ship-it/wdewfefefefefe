@@ -1,0 +1,107 @@
+.App {
+  height: 100%;
+  width: 100%;
+}
+
+/* Dev route stacked layout */
+.dev-layout {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  min-height: 100vh;
+}
+
+.dev-voice-section {
+  flex-shrink: 0;
+}
+
+.dev-voice-section .wrap {
+  min-height: auto;
+  padding: 1rem;
+}
+
+.dev-voice-section .card {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+/* Compact voice chat design for dev mode */
+.dev-voice-section .big-btn {
+  width: min(200px, 40vw);
+  height: min(200px, 40vw);
+  font-size: clamp(18px, 3vw, 22px);
+}
+
+.dev-voice-section .panel {
+  padding: 12px 0;
+}
+
+.dev-voice-section .cta {
+  padding: 8px 0;
+}
+
+.dev-voice-section footer {
+  margin-top: 12px;
+}
+
+.dev-console-section {
+  flex: 1;
+  margin-top: -1px; /* slight overlap for seamless connection */
+}
+
+/* Embedded dev console styling */
+.dev-console-section .admin-embedded {
+  position: static;
+  background: transparent;
+  backdrop-filter: none;
+  display: block;
+  padding: 0;
+  z-index: auto;
+}
+
+.dev-console-section .admin-card {
+  width: 100%;
+  max-width: 100%;
+  box-shadow: var(--shadow);
+  border-radius: var(--radius);
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-top: 1px solid #e6ebf7;
+}
+
+.dev-console-section .save-message {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 10;
+}
+
+/* Legacy grid layout for /debug route */
+.dev-grid {
+  height: 100%;
+}
+
+.dev-grid > div {
+  min-width: 0;
+  overflow: auto;
+  max-height: calc(100vh - 2rem);
+}
+
+.dev-grid .wrap {
+  place-items: start;
+  padding: 0;
+}
+
+.dev-grid .card {
+  width: 100%;
+  max-width: 100%;
+}
+
+.dev-grid .big-btn {
+  width: min(360px, 100%);
+  height: min(360px, 50vw);
+}

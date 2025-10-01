@@ -1,0 +1,335 @@
+.admin-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(27, 36, 64, 0.8);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  z-index: 1000;
+}
+
+/* Embedded mode: used on /dev to prevent overlay and z-index stacking */
+.admin-embedded {
+  position: static;
+  background: transparent;
+  backdrop-filter: none;
+  display: block;
+  align-items: stretch;
+  justify-content: stretch;
+  padding: 0;
+  z-index: auto;
+}
+
+.admin-embedded .admin-card {
+  width: 100%;
+  max-height: none;
+  box-shadow: none; /* keep both panes visually on the same plane */
+}
+
+.admin-card {
+  width: min(720px, 95vw);
+  max-height: 90vh;
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 20px 24px;
+  overflow-y: auto;
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.admin-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  border-bottom: 1px solid #e6ebf7;
+  padding-bottom: 16px;
+}
+
+.admin-header h1 {
+  font-size: 22px;
+  margin: 0;
+  color: var(--text);
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: var(--muted);
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 8px;
+  line-height: 1;
+  transition: all 0.2s ease;
+}
+
+.close-btn:hover {
+  background: #f0f2f5;
+  color: var(--text);
+}
+
+/* Form groups */
+.group {
+  margin-bottom: 24px;
+}
+
+.group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--text);
+}
+
+.group input[type="text"],
+.group input[type="password"],
+.group select,
+.group textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #d0d6e5;
+  border-radius: 12px;
+  font-size: 14px;
+  font-family: inherit;
+  transition: all 0.2s ease;
+}
+
+.group textarea {
+  min-height: 120px;
+  resize: vertical;
+  line-height: 1.5;
+}
+
+.group input:focus,
+.group textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(40, 67, 137, 0.1);
+}
+
+.group small {
+  display: block;
+  margin-top: 6px;
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+/* Rows and controls */
+.row {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.control-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+  min-width: 200px;
+}
+
+.control-group label {
+  margin: 0;
+  font-weight: normal;
+  white-space: nowrap;
+}
+
+.control-group input[type="range"] {
+  flex: 1;
+  min-width: 100px;
+}
+
+.control-group output {
+  font-size: 12px;
+  color: var(--muted);
+  min-width: 35px;
+  text-align: right;
+}
+
+.checkbox-label {
+  display: flex !important;
+  align-items: center;
+  gap: 8px;
+  font-weight: normal !important;
+  margin: 0 !important;
+  cursor: pointer;
+}
+
+.checkbox-label input[type="checkbox"] {
+  width: auto;
+  margin: 0;
+}
+
+/* Actions */
+.actions {
+  margin-top: 32px;
+  padding-top: 20px;
+  border-top: 1px solid #e6ebf7;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+
+.actions button {
+  padding: 8px 16px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 100px;
+}
+
+.actions button.primary {
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  box-shadow: 0 4px 10px rgba(40,67,137,0.25);
+}
+
+.actions button.primary:hover:not(:disabled) {
+  background: #36559e;
+  transform: translateY(-1px);
+}
+
+.actions button.secondary {
+  background: #f8f9fa;
+  color: var(--muted);
+  border: 1px solid #d0d6e5;
+}
+
+.actions button.secondary:hover:not(:disabled) {
+  background: #e9ecef;
+  color: var(--text);
+}
+
+.actions button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Regular black button style */
+.group button,
+button.regular {
+  padding: 8px 16px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: #2c3e50;
+  color: #fff;
+  border: none;
+  min-width: 100px;
+}
+
+.group button:hover:not(:disabled),
+button.regular:hover:not(:disabled) {
+  background: #1a252f;
+  transform: translateY(-1px);
+}
+
+.group button:disabled,
+button.regular:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.save-message {
+  margin-top: 12px;
+  padding: 8px 12px;
+  background: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+  border-radius: 8px;
+  font-size: 14px;
+  text-align: center;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Footer */
+footer {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid #e6ebf7;
+}
+
+footer small {
+  color: var(--muted);
+  font-size: 12px;
+  text-align: center;
+  display: block;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.info div {
+  font-size: 12px;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .admin-card {
+    padding: 16px 20px;
+  }
+  
+  .admin-header h1 {
+    font-size: 20px;
+  }
+  
+  .action-buttons {
+    justify-content: stretch;
+  }
+  
+  .actions button {
+    flex: 1;
+    min-width: auto;
+  }
+  
+  .row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .control-group {
+    min-width: auto;
+  }
+}
