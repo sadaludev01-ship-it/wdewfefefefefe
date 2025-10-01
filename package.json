@@ -29,6 +29,7 @@
     "dev": "concurrently \"npm run python-server\" \"npm run server\" \"npm start\"",
     "build": "react-scripts build",
     "build:server": "npm run build && npm run server",
+    "build:render": "npm run build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
